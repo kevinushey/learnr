@@ -336,8 +336,11 @@ tutorial_storage <- function(session) {
 #' @export
 filesystem_storage <- function(dir, compress = TRUE) {
 
+  writeLines(paste("DIR:", dir))
+
   # helpers to transform ids into valid filesystem paths
   id_to_filesystem_path <- function(id) {
+    writeLines(paste("ID:", id))
     id <- gsub("..", "", id, fixed = TRUE)
     utils::URLencode(id, reserved = TRUE, repeated = TRUE)
   }
