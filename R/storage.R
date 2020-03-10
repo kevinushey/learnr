@@ -188,10 +188,17 @@ progress_events_from_state_objects <- function(state_objects) {
 }
 
 save_object <- function(session, object_id, data) {
+
   tutorial_id <- read_request(session, "tutorial.tutorial_id")
   tutorial_version <- read_request(session, "tutorial.tutorial_version")
   user_id <- read_request(session, "tutorial.user_id")
   data$id <- object_id
+
+  writeLines(paste("TUTORIAL ID:", tutorial_id))
+  writeLines(paste("TUTORIAL VERSION:", tutorial_version))
+  writeLines(paste("USER ID:", user_id))
+  writeLines(paste("OBJECT ID:", object_id))
+
   tutorial_storage(session)$save_object(tutorial_id, tutorial_version, user_id, object_id, data)
 }
 
